@@ -1,0 +1,17 @@
+# Build configuration for Netlify.
+# Listed as a SHIPPED file in Projects/Backwill/specs/website-architecture.
+#
+# npm ci installs exactly what package-lock.json records, and fails loudly if
+# the lockfile and package.json disagree. npm install is permitted to resolve
+# newer versions inside the ^ ranges in devDependencies, which would let the
+# build server run code that was never run locally. Pinning it here closes the
+# low-severity reproducibility finding from the phase 0 review, and keeps the
+# build config in the repo where it is reviewable rather than in a dashboard.
+#
+# The publish directory and the Next.js runtime adapter are deliberately not
+# set here. Netlify detects the framework and configures both, and that
+# detection is what provisions serverless functions for the phase 5 signup
+# route. Overriding it by hand is how a project ends up on the static path.
+
+[build]
+  command = "npm ci && npm run build"
