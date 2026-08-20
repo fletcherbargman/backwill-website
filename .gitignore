@@ -42,3 +42,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scratch
+/_to_delete/
+/_incoming/
+
+# brand assets
+# brand/ is committed, because the brand system should travel with the repo.
+# Two exceptions: the large photographic frames below. Git cannot delta-compress
+# PNGs, so every re-export would add a whole new copy to history permanently.
+# Both re-export from Figma in under a minute, and brand/figma-system/colour-and-type.md
+# holds every value that actually matters as plain text.
+/brand/figma-system/Brand direction.png
+/brand/figma-system/Frame 3.png
+
+# Regenerable logo exports. Every one of these is a recolour of the three
+# transparency masters in brand/source/masters/, which are committed. Sixteen
+# large PNGs and eight tiles that git cannot delta-compress, for files that
+# rebuild from the masters in minutes.
+/brand/logo/png/
+/brand/logo/tiles/
