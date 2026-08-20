@@ -43,12 +43,16 @@ export const metadata: Metadata = {
   description:
     'Backwill fixes the digital problems holding your business back, then hands you the framework so the fix stays yours. Every solution joins our open catalogue.',
   // Declared explicitly because these files live in public/. Next only auto
-  // links icons placed in src/app/, so without this block the SVG icon and the
-  // Apple touch icon are served but never referenced by any page.
+  // links icons placed in src/app/, so without this block the Apple touch icon
+  // is served but never referenced by any page.
+  //
+  // public/icon.svg is deliberately not listed. It is the trail-less icon
+  // master, it fills with currentColor which resolves to black in a favicon
+  // context, and it weighs 87 KB against 1.1 KB for the 32px PNG. The ICO
+  // carries 16, 32 and 48 and covers every browser that matters.
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
       { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
       { url: '/favicon-16.png', type: 'image/png', sizes: '16x16' },
     ],
