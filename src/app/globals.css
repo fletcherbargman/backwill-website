@@ -1,49 +1,195 @@
+/*
+  Backwill design system
+  ----------------------
+  Every value here comes from brand/figma-system/colour-and-type.md, which is
+  written out from the Figma brand board. Do not invent a colour in this file.
+  If a value looks wrong it is wrong in the Figma system first, and it gets
+  fixed there and copied down.
+
+  Two deliberate departures from that document, both noted where they occur:
+  its `text-on-dark` is renamed, and the page ground is off-white.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ---- Primitives. The raw colours, named once. ---- */
+  --colour-deep-sage: #4a5e3c;
+  --colour-deep-sage-dark: #3b4b30;
+  --colour-warm-moss: #8a9a5b;
+  --colour-golden-wheat: #c9b96a;
+  --colour-deep-forest: #1e2b22;
+  --colour-warm-stone: #c9c4b8;
+  --colour-off-white: #edede6;
+  --colour-white: #ffffff;
+
+  /* ---- Roles. Components use these, never the primitives above. ---- */
+  --colour-action-primary: var(--colour-deep-sage);
+  --colour-action-primary-hover: var(--colour-deep-sage-dark);
+  --colour-action-secondary: var(--colour-warm-moss);
+  --colour-accent-highlight: var(--colour-golden-wheat);
+  --colour-border-subtle: var(--colour-warm-stone);
+
+  /* The Figma system calls this one `text-on-dark`, but it is the dark ink used
+     on light grounds, which is the opposite of what that name says. Renamed
+     here so nobody writes it backwards later. */
+  --colour-text-primary: var(--colour-deep-forest);
+
+  /* Light ink, for any dark ground. 6.04:1 on action-primary. */
+  --colour-text-on-primary: var(--colour-off-white);
+
+  /* Page ground is off-white, cards are white. The colour table in
+     colour-and-type.md says the page is white, but the moodboard header says
+     "off-white ground", the moodboard renders that way, and text-on-dark is
+     documented as 12.54:1 on off-white. Three against one. */
+  --colour-surface-page: var(--colour-off-white);
+  --colour-surface-card: var(--colour-white);
+  --colour-surface-dark: var(--colour-deep-forest);
+
+  /* ---- Focus ring ----
+     Deep forest, with an offset so the ring lands on the page ground rather
+     than on the control it is ringing. That offset is load bearing: no single
+     colour in this palette clears 3:1 against both the off-white page and the
+     deep sage button fill at the same time. The gold ring drawn in the
+     moodboard reads 1.68:1 against the page and fails. */
+  --focus-ring-colour: var(--colour-deep-forest);
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 3px;
+
+  /* ---- Type ----
+     Both families load through next/font in layout.tsx, self hosted at build
+     time, so no visitor request reaches Google. Coustard ships Regular and
+     Black only, which is why the scale hands over to Inter at h3. */
+  --font-display: var(--font-coustard), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  --text-display: 3.4375rem; /* 55px */
+  --text-h1: 2.75rem; /* 44px */
+  --text-h2: 2rem; /* 32px */
+  --text-h3: 1.375rem; /* 22px */
+  --text-body-lg: 1.125rem; /* 18px */
+  --text-body: 1rem; /* 16px */
+  --text-small: 0.875rem; /* 14px */
+  --text-label: 0.75rem; /* 12px */
+
+  --tracking-display: -0.01em;
+  --tracking-body: 0.005em;
+  --tracking-label: 0.1em;
+
+  /* ---- Space and shape ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+
+  --transition-fast: 150ms ease;
+  --container-max: 75rem; /* 1200px */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ---- Reset, kept to the rules that earn their place ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+body {
+  background-color: var(--colour-surface-page);
+  color: var(--colour-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: var(--tracking-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h1);
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-h2);
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+/* Coustard has no weight between Regular and Black, so h3 downward is Inter. */
+h3 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-h3);
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+small {
+  font-size: var(--text-small);
+  font-weight: 300;
+}
+
+a {
+  color: var(--colour-action-primary);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-colour);
+  outline-offset: var(--focus-ring-offset);
+}
+
+main {
+  padding: var(--space-8) var(--space-5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
