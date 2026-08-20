@@ -6,8 +6,8 @@
   If a value looks wrong it is wrong in the Figma system first, and it gets
   fixed there and copied down.
 
-  Two deliberate departures from that document, both noted where they occur:
-  its `text-on-dark` is renamed, and the page ground is off-white.
+  One deliberate departure from that document, noted where it occurs: its
+  `text-on-dark` is renamed, because the name says the opposite of the job.
 */
 
 :root {
@@ -33,23 +33,26 @@
      here so nobody writes it backwards later. */
   --colour-text-primary: var(--colour-deep-forest);
 
-  /* Light ink, for any dark ground. 6.04:1 on action-primary. */
+  /* Light ink, for any dark ground. 6.04:1 on action-primary. Not a surface. */
   --colour-text-on-primary: var(--colour-off-white);
 
-  /* Page ground is off-white, cards are white. The colour table in
-     colour-and-type.md says the page is white, but the moodboard header says
-     "off-white ground", the moodboard renders that way, and text-on-dark is
-     documented as 12.54:1 on off-white. Three against one. */
-  --colour-surface-page: var(--colour-off-white);
+  /* Page ground is white, and cards are white too, exactly as the colour table
+     in colour-and-type.md specifies. Cards are separated from the page by a
+     border-subtle hairline, not by a different fill.
+
+     Settled by Fletcher on 20 August after seeing it on screen: the palette
+     should read green and white, not green and beige. Off-white keeps its
+     other role, as the light ink used on dark grounds. */
+  --colour-surface-page: var(--colour-white);
   --colour-surface-card: var(--colour-white);
   --colour-surface-dark: var(--colour-deep-forest);
 
   /* ---- Focus ring ----
      Deep forest, with an offset so the ring lands on the page ground rather
      than on the control it is ringing. That offset is load bearing: no single
-     colour in this palette clears 3:1 against both the off-white page and the
-     deep sage button fill at the same time. The gold ring drawn in the
-     moodboard reads 1.68:1 against the page and fails. */
+     colour in this palette clears 3:1 against both the white page and the deep
+     sage button fill at the same time. The gold ring drawn in the moodboard
+     reads 1.98:1 against a white page and fails. */
   --focus-ring-colour: var(--colour-deep-forest);
   --focus-ring-width: 3px;
   --focus-ring-offset: 3px;
