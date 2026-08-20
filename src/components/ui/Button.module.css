@@ -1,0 +1,95 @@
+/*
+  Every value is a variable from globals.css. No hex appears in this file.
+
+  The four variants are the ones drawn in the brand moodboard: primary,
+  outlined, ghost and accent. Hover darkens rather than lightens throughout,
+  per the rule in brand/README.md, so contrast climbs on interaction instead
+  of falling.
+*/
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-body);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-body);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* The site-wide :focus-visible rule in globals.css already draws the ring.
+   Nothing is restated here, because the offset it sets is what keeps the ring
+   on the page ground where it clears 3:1. Overriding it locally would undo
+   that. */
+
+.primary {
+  background-color: var(--colour-action-primary);
+  color: var(--colour-text-on-primary);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--colour-action-primary-hover);
+}
+
+.outlined {
+  background-color: transparent;
+  border-color: var(--colour-action-primary);
+  color: var(--colour-action-primary);
+}
+
+.outlined:hover:not(:disabled) {
+  background-color: var(--colour-action-primary);
+  color: var(--colour-text-on-primary);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--colour-action-primary);
+  padding-inline: var(--space-2);
+}
+
+.ghost:hover:not(:disabled) {
+  color: var(--colour-text-primary);
+  text-decoration: underline;
+}
+
+/* The accent never carries a white label. Deep forest on gold is 7.47:1,
+   white on gold is 1.98:1 and unusable.
+
+   The Figma system defines no hover value for the accent, so this darkens the
+   token itself rather than introducing a ninth colour. If a real
+   accent-highlight-hover is ever added to the system, replace this line with
+   it. */
+.accent {
+  background-color: var(--colour-accent-highlight);
+  color: var(--colour-text-primary);
+}
+
+.accent:hover:not(:disabled) {
+  background-color: color-mix(
+    in srgb,
+    var(--colour-accent-highlight) 86%,
+    var(--colour-deep-forest)
+  );
+}
+
+.large {
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--text-body-lg);
+  border-radius: var(--radius-lg);
+}
