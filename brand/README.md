@@ -29,24 +29,24 @@ brand/
 
 ## The two master logos
 
-| | Mark | Ground | Use |
-|---|---|---|---|
+|               | Mark      | Ground    | Use                               |
+| ------------- | --------- | --------- | --------------------------------- |
 | **Master 01** | `#EDEDE6` | `#4A5E3C` | dark surfaces, app icons, avatars |
-| **Master 02** | `#4A5E3C` | `#EDEDE6` | documents, light pages, print |
+| **Master 02** | `#4A5E3C` | `#EDEDE6` | documents, light pages, print     |
 
 One colour swap apart, so both hold 6.04:1.
 
 ## Which file do I want?
 
-| I need | Use |
-|---|---|
-| The logo on a website | `logo/svg/backwill-mark-full.svg` (fill follows CSS `color`) |
-| A small logo, under 128px | `logo/svg/backwill-mark-icon.svg`, the B alone |
-| Logo with the name | `logo/svg/backwill-lockup-horizontal-primary.svg` |
-| An app icon or avatar | `logo/tiles/backwill-tile-primary-rounded-1024.png` |
-| A browser tab icon | `logo/favicon/favicon.ico` |
-| To put the logo on a photo | `logo/png/backwill-full-white-2048.png` |
-| To show someone the brand | `moodboard/backwill-moodboard.html` |
+| I need                     | Use                                                          |
+| -------------------------- | ------------------------------------------------------------ |
+| The logo on a website      | `logo/svg/backwill-mark-full.svg` (fill follows CSS `color`) |
+| A small logo, under 128px  | `logo/svg/backwill-mark-icon.svg`, the B alone               |
+| Logo with the name         | `logo/svg/backwill-lockup-horizontal-primary.svg`            |
+| An app icon or avatar      | `logo/tiles/backwill-tile-primary-rounded-1024.png`          |
+| A browser tab icon         | `logo/favicon/favicon.ico`                                   |
+| To put the logo on a photo | `logo/png/backwill-full-white-2048.png`                      |
+| To show someone the brand  | `moodboard/backwill-moodboard.html`                          |
 
 ## The lockups
 

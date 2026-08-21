@@ -2,3 +2,10 @@
 node_modules
 public
 package-lock.json
+
+# Generated brand artefacts. The moodboard is a 657 KB exported HTML file, not
+# hand-written source. Reformatting it produces an enormous diff in a public
+# repo for no benefit, and risks disturbing inline SVG whitespace.
+brand/moodboard
+brand/logo
+brand/source
